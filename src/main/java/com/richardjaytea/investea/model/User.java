@@ -11,7 +11,7 @@ import javax.persistence.Id;
 public class User {
 
     @Id @GeneratedValue
-    private Integer uid;
+    private Long uid;
     private String email;
     private String first_name;
     private String last_name;
@@ -27,11 +27,11 @@ public class User {
         this.last_name = last_name;
     }
 
-    public Integer getUid() {
+    public Long getUid() {
         return uid;
     }
 
-    public void setUid(Integer uid) {
+    public void setUid(Long uid) {
         this.uid = uid;
     }
 

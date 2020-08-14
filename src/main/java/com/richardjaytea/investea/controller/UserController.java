@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class UserController {
@@ -26,5 +27,11 @@ public class UserController {
     public void addUser(@RequestBody User user)
     {
         service.addUser(user);
+    }
+
+    @RequestMapping("user/{id}")
+    public Optional<User> getUser(Long id)
+    {
+        return service.getUser(id);
     }
 }
