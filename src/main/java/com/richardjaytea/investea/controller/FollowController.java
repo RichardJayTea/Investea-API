@@ -17,14 +17,14 @@ public class FollowController {
     @Autowired
     private FollowService service;
 
-    @RequestMapping(value = "/follow/{id}")
+    @RequestMapping(value = "/followers/{id}")
     public List<UserFollowersDto> getFollowers(@PathVariable long id)
     {
         return service.getFollowers(id);
     }
 
-    @RequestMapping(value = "/follows/{id}")
-    public List<UserFollowsDto> getFollows(@PathVariable long id)
+    @RequestMapping(value = "/following/{id}")
+    public List<UserFollowsDto> getFollowing(@PathVariable long id)
     {
         return service.getFollows(id);
     }
@@ -43,8 +43,8 @@ public class FollowController {
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value = "/follow/{id}")
-    public void removeFollower(@RequestBody Follow follow, long id)
+    public void removeFollower(@PathVariable long id)
     {
-        service.removeFollower(follow);
+        service.removeFollower(id);
     }
 }

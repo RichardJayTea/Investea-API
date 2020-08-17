@@ -30,8 +30,8 @@ public class FollowService {
         repository.save(follow);
     }
 
-    public void removeFollower(Follow follow)
+    public void removeFollower(long id)
     {
-        repository.delete(follow);
+        repository.deleteById(id);
     }
 }
