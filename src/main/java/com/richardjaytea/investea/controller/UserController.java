@@ -3,10 +3,7 @@ package com.richardjaytea.investea.controller;
 import com.richardjaytea.investea.model.User;
 import com.richardjaytea.investea.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -29,8 +26,14 @@ public class UserController {
         service.addUser(user);
     }
 
+    @RequestMapping(method = RequestMethod.PUT, value = "/user/{id}")
+    public void updateUser(@RequestBody User user, @PathVariable Long id)
+    {
+        service.updateUser(user);
+    }
+
     @RequestMapping("user/{id}")
-    public Optional<User> getUser(Long id)
+    public Optional<User> getUser(@PathVariable Long id)
     {
         return service.getUser(id);
     }
