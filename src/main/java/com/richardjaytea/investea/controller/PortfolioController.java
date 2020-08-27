@@ -24,8 +24,7 @@ public class PortfolioController {
     @RequestMapping(method = RequestMethod.POST, value = "/portfolio")
     public void addPortfolio(@RequestBody Map<String, Object> payload)
     {
-        User user = new User();
-        user.setId((Integer) payload.get("userId"));
+        User user = new User((Integer) payload.get("userId"));
 
         Portfolio portfolio = new Portfolio(
                 (String) payload.get("name"),

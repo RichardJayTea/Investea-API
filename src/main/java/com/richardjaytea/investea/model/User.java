@@ -22,6 +22,10 @@ public class User {
 
     }
 
+    public User(long id) {
+        this.id = id;
+    }
+
     public User(String email, String firstName, String lastName) {
         this.email = email;
         this.firstName = firstName;

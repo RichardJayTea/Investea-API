@@ -19,6 +19,10 @@ public class Portfolio {
     public Portfolio() {
     }
 
+    public Portfolio(long id){
+        this.id = id;
+    }
+
     public Portfolio(String name, String description, User user) {
         this.name = name;
         this.description = description;
