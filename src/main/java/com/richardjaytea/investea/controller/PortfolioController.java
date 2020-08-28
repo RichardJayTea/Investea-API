@@ -15,24 +15,16 @@ public class PortfolioController {
     @Autowired
     private PortfolioService service;
 
-    @RequestMapping(value = "/portfolio/all/{userId}")
+    @RequestMapping(value = "user/{userId}/portfolio/all")
     public List<Portfolio> getPortfolios(@PathVariable long userId)
     {
         return service.getPortfolios(userId);
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "/portfolio")
-    public void addPortfolio(@RequestBody Map<String, Object> payload)
+    @RequestMapping(method = RequestMethod.POST, value = "user/{userId}/portfolio")
+    public void addPortfolio(@PathVariable long userId, @RequestBody Portfolio portfolio)
     {
-        User user = new User((Integer) payload.get("userId"));
-
-        Portfolio portfolio = new Portfolio(
-                (String) payload.get("name"),
-                (String) payload.get("description"),
-                user
-        );
-
-        service.addPortfolio(portfolio);
+        service.addPortfolio(userId, portfolio);
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value = "/portfolio/{id}")

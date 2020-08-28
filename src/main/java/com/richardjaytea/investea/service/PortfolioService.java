@@ -1,6 +1,7 @@
 package com.richardjaytea.investea.service;
 
 import com.richardjaytea.investea.model.Portfolio;
+import com.richardjaytea.investea.model.User;
 import com.richardjaytea.investea.repository.PortfolioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,8 +19,11 @@ public class PortfolioService {
         return repository.findByUserId(userId);
     }
 
-    public void addPortfolio(Portfolio portfolio)
+    public void addPortfolio(long userId, Portfolio portfolio)
     {
+        User user = new User(userId);
+        portfolio.setUser(user);
+
         repository.save(portfolio);
     }
 

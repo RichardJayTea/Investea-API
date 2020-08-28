@@ -32,14 +32,7 @@ public class FollowController {
     @RequestMapping(method = RequestMethod.POST, value = "/follow")
     public void addFollowers(@RequestBody Map<String, Integer> payload)
     {
-        User follower = new User();
-        User follows = new User();
-
-        follower.setId(payload.get("userId"));
-        follows.setId(payload.get("followsUserId"));
-
-        Follow follow = new Follow(follower, follows);
-        service.addFollower(follow);
+        service.addFollower(payload.get("userId"), payload.get("followsUserId"));
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value = "/follow/{id}")

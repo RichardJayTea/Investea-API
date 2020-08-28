@@ -1,5 +1,6 @@
 package com.richardjaytea.investea.controller;
 
+import com.richardjaytea.investea.dto.TransactionDto;
 import com.richardjaytea.investea.model.Portfolio;
 import com.richardjaytea.investea.model.Transaction;
 import com.richardjaytea.investea.service.TransactionService;
@@ -16,7 +17,7 @@ public class TransactionController {
     TransactionService service;
 
     @RequestMapping(value = "/portfolio/{portfolioId}/transaction")
-    public List<Transaction> getPortfolioTransactions(@PathVariable long portfolioId)
+    public List<TransactionDto> getPortfolioTransactions(@PathVariable long portfolioId)
     {
         return service.getTransactions(portfolioId);
     }
@@ -24,9 +25,6 @@ public class TransactionController {
     @RequestMapping(method = RequestMethod.POST, value = "/portfolio/{portfolioId}/transaction")
     public void addPortfolioTransaction(@PathVariable long portfolioId, @RequestBody Transaction transaction)
     {
-        Portfolio portfolio = new Portfolio(portfolioId);
-        transaction.setPortfolio(portfolio);
-
-        service.addTransaction(transaction);
+        service.addTransaction(portfolioId, transaction);
     }
 }

@@ -19,6 +19,10 @@ public class Follow {
     public Follow() {
     }
 
+    public Follow(long id) {
+        this.id = id;
+    }
+
     public Follow(User user, User follows) {
         this.user = user;
         this.follows = follows;

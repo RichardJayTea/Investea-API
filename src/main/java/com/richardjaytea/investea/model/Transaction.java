@@ -17,16 +17,18 @@ public class Transaction {
     private long volume;
     private BigDecimal price;
     private Integer type;
+    private String comment;
 
     public Transaction() {
     }
 
-    public Transaction(Portfolio portfolio, String ticker, long volume, BigDecimal price, Integer type) {
+    public Transaction(Portfolio portfolio, String ticker, long volume, BigDecimal price, Integer type, String comment) {
         this.portfolio = portfolio;
         this.ticker = ticker;
         this.volume = volume;
         this.price = price;
         this.type = type;
+        this.comment = comment;
     }
 
     public long getId() {
@@ -75,5 +77,13 @@ public class Transaction {
 
     public void setType(Integer type) {
         this.type = type;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
     }
 }

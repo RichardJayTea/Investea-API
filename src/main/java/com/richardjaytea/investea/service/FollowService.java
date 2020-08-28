@@ -3,6 +3,7 @@ package com.richardjaytea.investea.service;
 import com.richardjaytea.investea.dto.UserFollowersDto;
 import com.richardjaytea.investea.dto.UserFollowsDto;
 import com.richardjaytea.investea.model.Follow;
+import com.richardjaytea.investea.model.User;
 import com.richardjaytea.investea.repository.FollowRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,8 +26,12 @@ public class FollowService {
         return repository.findByUserId(userId);
     }
 
-    public void addFollower(Follow follow)
+    public void addFollower(long userId, long followsUserId)
     {
+        User follower = new User(userId);
+        User follows = new User(followsUserId);
+        Follow follow = new Follow(follower, follows);
+
         repository.save(follow);
     }
 
