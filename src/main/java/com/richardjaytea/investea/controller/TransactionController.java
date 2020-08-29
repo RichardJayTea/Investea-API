@@ -22,9 +22,9 @@ public class TransactionController {
         return service.getTransactions(portfolioId);
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "/portfolio/{portfolioId}/transaction")
-    public void addPortfolioTransaction(@PathVariable long portfolioId, @RequestBody Transaction transaction)
+    @RequestMapping(method = RequestMethod.POST, value = "/portfolio/{portfolioId}/transaction/{transactionTypeId}/{stockId}")
+    public void addPortfolioTransaction(@PathVariable long portfolioId, @PathVariable long transactionTypeId, @PathVariable long stockId, @RequestBody Transaction transaction)
     {
-        service.addTransaction(portfolioId, transaction);
+        service.addTransaction(portfolioId, transactionTypeId, stockId, transaction);
     }
 }

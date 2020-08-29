@@ -9,22 +9,28 @@ public class Transaction {
     @Id @GeneratedValue
     private long id;
 
+    private long volume;
+    private BigDecimal price;
+    private String comment;
+
     @ManyToOne
     @JoinColumn(name = "portfolio_id")
     private Portfolio portfolio;
 
-    private String ticker;
-    private long volume;
-    private BigDecimal price;
-    private Integer type;
-    private String comment;
+    @ManyToOne
+    @JoinColumn(name = "stock_id")
+    private Stock stock;
+
+    @ManyToOne
+    @JoinColumn(name = "type")
+    private TransactionType type;
 
     public Transaction() {
     }
 
-    public Transaction(Portfolio portfolio, String ticker, long volume, BigDecimal price, Integer type, String comment) {
+    public Transaction(Portfolio portfolio, Stock stock, long volume, BigDecimal price, TransactionType type, String comment) {
         this.portfolio = portfolio;
-        this.ticker = ticker;
+        this.stock = stock;
         this.volume = volume;
         this.price = price;
         this.type = type;
@@ -47,12 +53,12 @@ public class Transaction {
         this.portfolio = portfolio;
     }
 
-    public String getTicker() {
-        return ticker;
+    public Stock getStock() {
+        return stock;
     }
 
-    public void setTicker(String ticker) {
-        this.ticker = ticker;
+    public void setStock(Stock stock) {
+        this.stock = stock;
     }
 
     public long getVolume() {
@@ -71,11 +77,11 @@ public class Transaction {
         this.price = price;
     }
 
-    public Integer getType() {
+    public TransactionType getType() {
         return type;
     }
 
-    public void setType(Integer type) {
+    public void setType(TransactionType type) {
         this.type = type;
     }
 

@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 public interface TransactionDto {
 
     long getId();
-    String getTicker();
+    String getStock();
     long getVolume();
     BigDecimal getPrice();
     Integer getType();
